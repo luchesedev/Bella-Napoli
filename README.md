@@ -1,5 +1,5 @@
 
-# 🍕 Bella Napolli - App de Pedidos
+# 🍕 Bella Napolli - App para controle de conta em uma pizzaria
 
 Este é um aplicativo Android nativo desenvolvido para a disciplina de **Desenvolvimento Mobile**. O projeto simula o fluxo completo de uma pizzaria, desde a seleção de produtos até a geração de um cupom fiscal detalhado.
 
