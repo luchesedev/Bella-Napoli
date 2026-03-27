@@ -23,6 +23,7 @@
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="400dp"
+            app:cardBackgroundColor="?attr/colorSurface"
             android:layout_marginTop="20dp">
 
             <LinearLayout
@@ -36,7 +37,9 @@
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:text="Obrigado por Comprar na BELLA NAPOLI"
-                    android:textColor="@color/vinho" />
+                    android:textColor="@color/vinho"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/txtExtrato"
@@ -49,8 +52,10 @@
                     android:id="@+id/txtValorConta"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="320dp"
                     android:text="Valor da conta:"
-                    android:textColor="@color/vinho" />
+                    android:textColor="@color/vinho"
+                    android:textSize="18sp" />
 
             </LinearLayout>
         </androidx.cardview.widget.CardView>
