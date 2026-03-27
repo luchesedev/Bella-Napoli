@@ -17,7 +17,7 @@ import androidx.core.view.WindowInsetsCompat;
 import com.google.android.material.snackbar.Snackbar;
 
 public class TelaPIzza extends AppCompatActivity {
-    Double valorMusa, valorPepe,valorAtum,valorFrango;
+   String valorMusa, valorPepe,valorAtum,valorFrango;
     Intent it;
     Button btnCalcular,MaisMusa,MaisPeperoni,MaisAtum,MaisFrango,MenosMusa,MenosPeperoni,MenosAtum,MenosFrango;
     TextView qntdMusa,qntdPeperoni,qntdAtum,qntdFrango;
@@ -123,18 +123,21 @@ public class TelaPIzza extends AppCompatActivity {
                             .setTextColor(Color.WHITE)
                             .show();
                 }else {
-
-                    valorPepe = contadorPepe * 62.50;
-                    valorFrango = contadorFrango * 68.70;
-                    valorMusa = contadorMussa * 55.90;
-                    valorAtum = contadorAtum * 70.90;
-                    String extrato =("-").repeat(30);
-                    extrato += (contadorPepe > 0) ? qntdPeperoni.getText().toString() +"X  "+valorPepe+ "\n": "";
-                    extrato += (contadorFrango > 0) ? qntdFrango.getText().toString() +"X  "+valorFrango+ "\n": "";
-                    extrato += (contadorMussa > 0) ? qntdMusa.getText().toString() +"X  "+valorMusa+ "\n": "";
-                    extrato += (contadorAtum > 0) ? qntdAtum.getText().toString() +"X  "+valorAtum+ "\n": "";
-                    extrato +=("-").repeat(30);
+                    valorPepe = String.format("%.2f",contadorPepe * 62.50);
+                    valorFrango = String.format("%.2f",contadorFrango * 68.70);
+                    valorMusa = String.format("%.2f",contadorMussa * 55.90);
+                    valorAtum = String.format("%.2f",contadorAtum * 70.90);
+                    Double totalGeral = Double.parseDouble(valorAtum) + Double.parseDouble(valorFrango)+Double.parseDouble(valorMusa)+Double.parseDouble(valorPepe);
+                    String extrato =("-").repeat(90)+"\nExtrato:"+(" ").repeat(80)+"Total\n";
+                    extrato += (contadorPepe > 0) ? ""+qntdPeperoni.getText().toString() +"X  Peperoni("+"R$62.50):"+(" ").repeat(44)+"R$"+valorPepe+ "\n": "";
+                    extrato += (contadorFrango > 0) ? qntdFrango.getText().toString() +"X  Frango c/catupiry("+"R$68.70):"+(" ").repeat(28)+"R$"+valorFrango+ "\n": "";
+                    extrato += (contadorMussa > 0) ? qntdMusa.getText().toString() +"X  Mussarela("+"R$55.90):"+(" ").repeat(41)+"R$"+valorMusa+ "\n": "";
+                    extrato += (contadorAtum > 0) ? qntdAtum.getText().toString() +"X  Atum c/catupiry("+"R$70.90):"+(" ").repeat(31)+"R$"+valorAtum+ "\n": "";
+                    extrato +=("-").repeat(90)+"\n";
                     it = new Intent(getApplicationContext(), TelaResultado.class);
+                    it.putExtra("extrato", extrato);
+                    String totalFormatado = String.format("%.2f", totalGeral);
+                    it.putExtra("ValorTotal", "Valor da conta: "+(" ").repeat(33)+"R$"+totalFormatado);
                     startActivity(it);
                 }
             }

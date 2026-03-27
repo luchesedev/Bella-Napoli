@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -14,6 +15,8 @@ import androidx.core.view.WindowInsetsCompat;
 public class TelaResultado extends AppCompatActivity {
     Intent it;
     Button btnInicio,btnComprar;
+    TextView txtExtrato,txtConta;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,6 +29,14 @@ public class TelaResultado extends AppCompatActivity {
         });
         btnInicio = findViewById(R.id.btnInicio);
         btnComprar = findViewById(R.id.btnComprar);
+        txtExtrato = findViewById(R.id.txtExtrato);
+        txtConta = findViewById(R.id.txtValorConta);
+
+         String resumo = getIntent().getStringExtra("extrato");
+        String resultado = getIntent().getStringExtra("ValorTotal");
+
+        txtConta.setText(resultado);
+        txtExtrato.setText(resumo);
 
         btnInicio.setOnClickListener(new View.OnClickListener() {
             @Override
